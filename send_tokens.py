@@ -29,7 +29,8 @@ def send_tokens( receiver_pk, tx_amount ):
 
     #Your code here
     tx = transaction.PaymentTxn(
-        "WXWTCBLKKEHALMFO6EDX2RWTLXK2M5NCFCIOWU4KDCFPPOALGP7POO6EIQ",
+        # "WXWTCBLKKEHALMFO6EDX2RWTLXK2M5NCFCIOWU4KDCFPPOALGP7POO6EIQ",
+         pk,
          tx_fee,
          first_valid_round,
          last_valid_round,
@@ -38,7 +39,6 @@ def send_tokens( receiver_pk, tx_amount ):
          tx_amount,
          flat_fee = True
     )
-
     signed_tx = tx.sign(sk)
     
     try:
@@ -48,7 +48,7 @@ def send_tokens( receiver_pk, tx_amount ):
     except Exception as e:
         print(e)
 
-    txid=signed_tx.transaction.get_txid()
+    # txid=signed_tx.transaction.get_txid()
     return sender_pk, txid
 
 # Function from Algorand Inc.
