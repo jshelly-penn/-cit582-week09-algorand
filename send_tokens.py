@@ -28,8 +28,7 @@ def send_tokens( receiver_pk, tx_amount ):
     sender_pk = pk
 
     #Your code here
-    tx = transaction.PaymentTxn(
-        # "WXWTCBLKKEHALMFO6EDX2RWTLXK2M5NCFCIOWU4KDCFPPOALGP7POO6EIQ",
+    txn = transaction.PaymentTxn(
          pk,
          tx_fee,
          first_valid_round,
@@ -39,17 +38,9 @@ def send_tokens( receiver_pk, tx_amount ):
          tx_amount,
          flat_fee = True
     )
-    signed_tx = tx.sign(sk)
-    # txid = signed_tx.transaction.get_txid()
-    
-    # try:
+    signed_tx = txn.sign(sk)
     txid = algod.AlgodClient.send_transaction(signed_tx)
-        # print('Transaction  sent with ID', singed_tx.transaction.get_txid())
-        # wait_for_confirmation(algod.AlgodClient, signed_tx.transaction.get_txid())
-    # except Exception as e:
-    #     print(e)
 
-    # txid=signed_tx.transaction.get_txid()
     return sender_pk, txid
 
 # Function from Algorand Inc.
