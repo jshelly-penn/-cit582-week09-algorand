@@ -39,7 +39,7 @@ def send_tokens( receiver_pk, tx_amount ):
          flat_fee = True
     )
     signed_tx = tx.sign(sk)
-    txid = algod.AlgodClient.send_transaction(signed_tx)
+    txid = acl.send_transaction(signed_tx)
 
     return sender_pk, txid
 
