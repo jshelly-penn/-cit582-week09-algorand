@@ -40,7 +40,7 @@ def send_tokens( receiver_pk, tx_amount ):
     )
 
     signed_tx = tx.sign(sk)
-
+    
     try:
         tx_confirm = algod.AlgodClient.send_transaction(signed_tx)
         print('Transaction  sent with ID', singed_tx.transaction.get_txid())
@@ -48,6 +48,7 @@ def send_tokens( receiver_pk, tx_amount ):
     except Exception as e:
         print(e)
 
+    txid=signed_tx.transaction.get_txid()
     return sender_pk, txid
 
 # Function from Algorand Inc.
