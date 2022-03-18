@@ -26,7 +26,7 @@ def send_tokens( receiver_pk, tx_amount ):
     tx_fee = params.min_fee
     last_valid_round = params.last
     sender_pk = pk
-
+    
     #Your code here
     tx = transaction.PaymentTxn(
          pk,
@@ -39,7 +39,7 @@ def send_tokens( receiver_pk, tx_amount ):
          flat_fee = True
     )
     signed_tx = tx.sign(sk)
-    tx_confirm = algod.AlgodClient.send_transaction(signed_tx)
+    global txid = algod.AlgodClient.send_transaction(signed_tx)
 
     return sender_pk, txid
 
