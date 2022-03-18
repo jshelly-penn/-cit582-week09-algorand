@@ -40,11 +40,12 @@ def send_tokens( receiver_pk, tx_amount ):
          flat_fee = True
     )
     signed_tx = tx.sign(sk)
-    txid = signed_tx.transaction.get_txid()
+    # txid = signed_tx.transaction.get_txid()
+    
     try:
-        tx_confirm = algod.AlgodClient.send_transaction(signed_tx)
-        print('Transaction  sent with ID', txid) # singed_tx.transaction.get_txid())
-        wait_for_confirmation(algod.AlgodClient, txid) #txid=signed_tx.transaction.get_txid())
+        txid = algod.AlgodClient.send_transaction(signed_tx)
+        print('Transaction  sent with ID', singed_tx.transaction.get_txid())
+        wait_for_confirmation(algod.AlgodClient, signed_tx.transaction.get_txid())
     except Exception as e:
         print(e)
 
